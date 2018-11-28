@@ -1,8 +1,8 @@
 <div class="image-slider">
-  <div class="image-container" id="img-con">
-    <img src="assets/images/la.jpg" />
+  <div class="image-container fade" >
+    <img [src]="imgSrc"  />
   </div>
 
-  <div class="btn-left" id="prev">Previous</div>
-  <div class="btn-right" id="next">Next</div>
+  <div class="btn-left prev"  (click)="previous()" >Previous</div>
+  <div class="btn-right next" (click)="next()" >Next</div>
 </div>

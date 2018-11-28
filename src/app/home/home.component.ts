@@ -6,26 +6,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-    const img_icon = document.getElementById('img-con');
-    const next = document.getElementById('next');
-    const prev = document.getElementById('prev');
-    const images = ['la.jpg','chicago.jpg','ny.jpg'];
-
-    let i = images.length;
-
-    next.onclick = () => { 
-      i = (i<images.length) ? (i=i+1):(i=1);
-      img_icon.innerHTML = "<img class='img' src =assets/images/"+images[i-1]+ ">";
-    }
-
-    prev.onclick = () => {
-      i = (i<images.length && i >1) ? (i=i-1):(i=images.length);
-      img_icon.innerHTML = "<img class='img' src=assets/images/"+images[i-1]+ ">";
-    }
+  images = ['la.jpg','chicago.jpg','ny.jpg'];
+  i = this.images.length;
+  imgSrc = '';
+  
+  constructor() { 
+    this.imgSrc = "assets/images/chicago.jpg";
   }
+    ngOnInit() {
+      var myInterval = setInterval( () => {
+        if (this.next()){
+            clearInterval(myInterval);
+        }
+    },2000)
+    }
+    
+    next = () => {
+      clearInterval();
+      this.i = (this.i<this.images.length) ? (this.i=this.i+1):(this.i=1);
+      this.imgSrc = "assets/images/"+this.images[this.i-1];
+    }
+
+    previous = () => {
+      this.i = ( this.i >1) ? (this.i=this.i-1):(this.i=this.images.length);
+      this.imgSrc = "assets/images/"+this.images[this.i-1];
+    }
+  
 
 }
