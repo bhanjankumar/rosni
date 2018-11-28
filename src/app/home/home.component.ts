@@ -14,15 +14,15 @@ export class HomeComponent implements OnInit {
     this.imgSrc = "assets/images/chicago.jpg";
   }
     ngOnInit() {
-      var myInterval = setInterval( () => {
-        if (this.next()){
-            clearInterval(myInterval);
-        }
-    },2000)
+    //   var myInterval = setInterval( () => {
+    //     if (this.next()){
+    //         clearInterval(myInterval);
+    //     }
+    // },2000)
     }
     
     next = () => {
-      clearInterval();
+      //clearInterval();
       this.i = (this.i<this.images.length) ? (this.i=this.i+1):(this.i=1);
       this.imgSrc = "assets/images/"+this.images[this.i-1];
     }
